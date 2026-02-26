@@ -10,6 +10,9 @@ export const getHomeContent = (container) => {
     const introDiv = document.createElement('div');
     introDiv.classList.add('intro-container');
 
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('intro-text-container');
+
     const introHeading = document.createElement('h2');
     introHeading.classList.add('intro-heading');
     introHeading.textContent = `Garrison Bar & Restaurant`;
@@ -18,51 +21,38 @@ export const getHomeContent = (container) => {
     introText.classList.add('intro-text');
     introText.textContent = `It’s bar-forward at heart, where the cocktails lead and the kitchen keeps up, bold but never loud. A place for people who appreciate craft, conversation, and a little edge with their elegance.`
 
+    textContainer.append(introHeading, introText)
+    
     const introImg = document.createElement('img');
     introImg.classList.add('intro-img');
     introImg.setAttribute('src', introBarImg);
     introImg.setAttribute('alt', 'bar image');
     
-    introDiv.append(introHeading, introText, introImg)
+    introDiv.append(textContainer, introImg)
     
     // Highlights Section
     const highlightsDiv = document.createElement('div');
     highlightsDiv.classList.add('highlights-container');
 
-    // Cocktails Div
-    const cocktailsDiv = document.createElement('div');
-    cocktailsDiv.classList.add('cocktails');
+    const highlights = [
+        { icon: 'fa-martini-glass-citrus', label: 'Craft Cocktails' },
+        { icon: 'fa-utensils', label: 'Chef-Curated Menu' },
+        { icon: 'fa-music', label: 'Live Events' },
+    ];
 
-    const cocktailText = document.createElement('p');
-    cocktailText.textContent = "Craft Cocktails";
+    highlights.forEach(highlight => {
+        const highlightDiv = document.createElement('div');
+        highlightDiv.classList.add('highlight');
 
-    const cocktailIcon = document.createElement('i');
-    cocktailIcon.className = 'fa-solid fa-martini-glass-citrus';
-    cocktailsDiv.append(cocktailIcon, cocktailText);
+        const icon = document.createElement('i');
+        icon.className = `fa-solid ${highlight.icon}`;
 
-    // Menus Div
-    const menusDiv = document.createElement('div');
-    menusDiv.classList.add('menus');
+        const label = document.createElement('p');
+        label.textContent = highlight.label;
 
-    const menuText = document.createElement('p');
-    menuText.textContent = "Chef-Curated Menu";
-
-    const menuIcon = document.createElement('i');
-    menuIcon.className = 'fa-solid fa-utensils';
-    menusDiv.append(menuIcon, menuText);
-
-    // Events Div
-    const eventsDiv = document.createElement('div');
-    eventsDiv.classList.add('events');
-
-    const eventText = document.createElement('p');
-    eventText.textContent = "Live Events";
-
-    const eventIcon = document.createElement('i');
-    eventIcon.className = 'fa-solid fa-music';
-    eventsDiv.append(eventIcon, eventText);
-
-    highlightsDiv.append(cocktailsDiv, menusDiv, eventsDiv);
+        highlightDiv.append(icon, label);
+        highlightsDiv.append(highlightDiv);
+    });
 
     // Features Section
     const featuresDiv = document.createElement('div');
@@ -72,54 +62,32 @@ export const getHomeContent = (container) => {
     featureHeading.classList.add('feature-heading');
     featureHeading.textContent = "House Signatures";
 
-    // Feature Cars Container
-    const cardsContainer = document.createElement('div');
-    cardsContainer.classList.add('cards-container');
+    // Feature Cards
+    const featureCardsContainer = document.createElement('div');
+    featureCardsContainer.classList.add('cards-container');
 
-    // Feature One
-    const featureOne = document.createElement('div');
-    featureOne.classList.add('feature-card');
+    const features = [
+        { src: pastaImg, name: 'Pasta with Shrimps' },
+        { src: cocktailImg, name: 'Scarlet Cocktail' },
+        { src: steakImg, name: 'Succulent Cut Steak' },
+    ]
 
-    const featureOneImg = document.createElement('img');
-    featureOneImg.classList.add('feature-img');
-    featureOneImg.setAttribute('src', pastaImg);
-    featureOneImg.setAttribute('alt', 'pasta image');
+    features.forEach(feature => {
+        const featureCard = document.createElement('div');
+        featureCard.classList.add('feature-card');
 
-    const featureOneText = document.createElement('p');
-    featureOneText.classList.add('feature-text');
-    featureOneText.textContent = "Pasta with Shrimps";
+        const featureImg = document.createElement('img');
+        featureImg.classList.add('feature-img');
+        featureImg.setAttribute('src', feature.src);
+        featureImg.setAttribute('alt', `image of ${feature.name}`);
 
-    featureOne.append(featureOneImg, featureOneText);
+        const featureLabel = document.createElement('p');
+        featureLabel.classList.add('feature-text');
+        featureLabel.textContent = feature.name;
 
-    // Feature Two
-    const featureTwo = document.createElement('div');
-    featureTwo.classList.add('feature-card');
-
-    const featureTwoImg = document.createElement('img');
-    featureTwoImg.classList.add('feature-img');
-    featureTwoImg.setAttribute('src', cocktailImg);
-    featureTwoImg.setAttribute('alt', 'cocktail image');
-
-    const featureTwoText = document.createElement('p');
-    featureTwoText.classList.add('feature-text');
-    featureTwoText.textContent = "Scarlet Cocktail";
-
-    featureTwo.append(featureTwoImg, featureTwoText);
-
-    // Feature Three
-    const featureThree = document.createElement('div');
-    featureThree.classList.add('feature-card');
-
-    const featureThreeImg = document.createElement('img');
-    featureThreeImg.classList.add('feature-img');
-    featureThreeImg.setAttribute('src', steakImg);
-    featureThreeImg.setAttribute('alt', 'steak image');
-
-    const featureThreeText = document.createElement('p');
-    featureThreeText.classList.add('feature-text');
-    featureThreeText.textContent = "Succulent Cut Steak";
-
-    featureThree.append(featureThreeImg, featureThreeText);
+        featureCard.append(featureImg, featureLabel);
+        featureCardsContainer.append(featureCard);
+    })
 
     // See Menu Button
     const seeMenuBtn = document.createElement('button');
@@ -130,8 +98,7 @@ export const getHomeContent = (container) => {
     });
     seeMenuBtn.textContent = "See Full Menu";
 
-    cardsContainer.append(featureOne, featureTwo, featureThree)
-    featuresDiv.append(featureHeading, cardsContainer, seeMenuBtn);
+    featuresDiv.append(featureHeading, featureCardsContainer, seeMenuBtn);
 
     // Booking Div
     const formDiv = document.createElement('div');

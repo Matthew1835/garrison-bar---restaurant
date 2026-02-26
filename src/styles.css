@@ -103,6 +103,7 @@ nav {
 }
 .cta-section h1 {
     font-size: 2.5rem;
+    letter-spacing: 1px;
 }
 .cta-section h2 {
     text-align: right;
@@ -133,6 +134,8 @@ main {
     font-family: 'Crimson Text', 'serif';
     height: 100%;
 }
+
+/* Home Page */
 /* Introduction Section */
 .intro-container {
     padding: 50px 20px;
@@ -141,6 +144,11 @@ main {
     align-items: flex-start;
     justify-content: center;
     gap: 30px;
+}
+.intro-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .intro-heading {
     font-family: 'Playfair Display', 'serif';
@@ -165,7 +173,7 @@ main {
     justify-content: center;
     gap: 0px;
 }
-.cocktails, .menus, .events {
+.highlight {
     padding: 30px;
     width: 100%;
     display: flex;
@@ -310,6 +318,68 @@ main {
     background-color: var(--accent-color);
     color: var(--text-color);
 }
+
+/* Menu Page */
+/* Drinks Section */
+.menu-container {
+    /* border: 1px solid var(--text-color); */
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+.drinks-food-container {
+    /* border: 1px solid var(--accent-color); */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.menu-heading {
+    font-family: 'Playfair Display', 'serif';
+    letter-spacing: 1px;
+}
+.menu-cards-container {
+    /* border: 1px solid white; */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+}
+.menu-card {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 170px;
+}
+.menu-img {
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 80%;
+}
+hr {
+    width: 60%;
+    border-color: var(--accent-color);
+}
+.menu-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: 'Crimson Text', 'serif';
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+
 /* Footer Section */
 footer {
     height: auto;
@@ -365,34 +435,37 @@ footer {
     header {
         background-position: center 10%;
     }
+    .menu-img {
+        object-position: center 60%;
+    }
 }
 
 @media only screen AND (min-width: 768px) {
     header {
         background-position: center 80%;
     }
+    /* Home Page */
     .intro-container {
+        flex-direction: row;
         align-items: center;
+        padding: 50px 30px;
     }
     .intro-text {
         font-size: 1rem;
-        width: 70%;
-        text-align: center;
+        text-align: justify;
     }
     .intro-img {
-        width: 70%;
-        aspect-ratio: 2/1;
+        width: 50%;
     }
     .highlights-container {
         flex-direction: row;
     }
-
     .feature-heading {
         width: auto;
     }
     .cards-container {
         flex-direction: row;
-        gap: 20px;
+        gap: 15px;
     }
     .feature-card {
         height: 250px;
@@ -412,6 +485,27 @@ footer {
         justify-content: center;
         gap: 30px;
         padding: 10px 20px;
+    }
+    /* Menu Page */
+    .menu-container {
+        padding: 40px;
+    }
+    .menu-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 10px;
+    }
+    .menu-heading {
+        font-size: 1.7rem;
+    }
+    .menu-card {
+        height: 200px;
+    }
+    .menu-img {
+        /* width: 55%; */
+        object-position: center 50%;
+    }
+    .menu-info {
+        font-size: 1rem;
     }
 }
 
@@ -455,15 +549,19 @@ footer {
         padding: 7px 20px;
         font-size: 1rem;
     }
-    .intro-img {
-        width: 50%;
-        aspect-ratio: 2/1;
-    }
+    /* Home Page */
     .feature-card {
         height: 300px;
     }
     .feature-img {
         object-position: center 70%;
     }
-
+    /* Menu Page */
+    .menu-card {
+        height: 300px;
+    }
+    .menu-img {
+        width: 50%;
+        object-position: center 50%;
+    }
 }
