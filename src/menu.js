@@ -9,12 +9,9 @@ import foodImg3 from './images/food (3).jpg';
 import foodImg4 from './images/pasta.jpg';  
 
 export const getMenuContent = (container) => {
-    const menuContainer = document.createElement('div');
-    menuContainer.classList.add('menu-container');
-
     // Drinks Section
     const drinksContainer = document.createElement('div');
-    drinksContainer.classList.add('drinks-food-container');
+    drinksContainer.classList.add('menu-container');
 
     const drinkHeading = document.createElement("h2");
     drinkHeading.classList.add('menu-heading');
@@ -63,7 +60,7 @@ export const getMenuContent = (container) => {
 
     // Food Section
     const foodContainer = document.createElement('div');
-    foodContainer.classList.add('drinks-food-container');
+    foodContainer.classList.add('menu-container');
 
     const foodHeading = document.createElement("h2");
     foodHeading.classList.add('menu-heading');
@@ -110,6 +107,5 @@ export const getMenuContent = (container) => {
     
     foodContainer.append(foodHeading, foodCardsContainer);
 
-    menuContainer.append(drinksContainer, foodContainer);
-    container.append(menuContainer);
+    container.append(drinksContainer, foodContainer);
 };
